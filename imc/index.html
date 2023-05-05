@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>IMC</title>
+</head>
+<body>
+    <header>
+
+    </header>
+    <main>
+        <h2>Calcule seu IMC</h2>
+        <h4>O IMC (Índice de Massa Corporal) é um indicador que serve para avaliar o peso do individuo, permitindo avaliar se está com excesso de peso ou obesidade. </h4>
+        <div class="forms">
+            <form action="" id="formulario">
+                <label for="">Peso</label>
+                <input type="text" name="peso" required placeholder="Informe seu peso em kg">
+                <label for="">Altura</label>
+                <input type="text" name="altura" required placeholder="Informe sua altura em metros "> <br>
+                <button type="submit">Enviar</button>
+            </form>
+
+        </div>
+        
+        
+        <p id="texto"></p>
+
+        <script>
+        var formulario = document.getElementById("formulario")
+        function enviarForm(event) {
+            event.preventDefault()
+            var dados = new FormData(this) 
+            var peso = dados.get("peso")
+            var altura = dados.get("altura")
+            var alt = altura * altura
+            var imc = peso / alt
+
+            if(imc <= 18.5) {
+                texto.innerHTML = "Abaixo do peso, seu IMC é: " + imc.toFixed(2)
+            } else if(imc >=  18.5 && imc <= 24.9) {
+                texto.innerHTML = "Peso normal, seu IMC é: " + imc.toFixed(2)
+            } else if(imc >= 25.0 &&  imc <= 29.9 ) {
+                texto.innerHTML = "Sobrepeso, seu IMC é: " + imc.toFixed(2)
+                }else if(imc  >= 30.0 && imc <= 39.9) {
+                texto.innerHTML = "Obesidade, seu IMC é: " + imc.toFixed(2)
+                }else if(imc >= 40) {
+                    texto.innerHTML = "Obesidade grave, seu IMC é: " + imc.toFixed(2)
+                }
+
+        } 
+
+        formulario.addEventListener("submit", enviarForm)
+        </script>
+
+    </main>
+    <footer>
+
+    </footer>
+</body>
+</html>
